@@ -1,3 +1,4 @@
+/* ── Boutons ────────────────────────────────────────── */
 .btn {
   min-height: 44px;
   padding: 0.85rem 1rem;
@@ -16,6 +17,7 @@
   background: transparent;
 }
 
+/* ── Cards ──────────────────────────────────────────── */
 .card {
   background: var(--color-surface);
   border: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent);
@@ -30,12 +32,14 @@
   margin-bottom: var(--space-3);
 }
 
+/* ── KPI ────────────────────────────────────────────── */
 .kpi {
   font-size: var(--text-xl);
   font-weight: 700;
   font-variant-numeric: tabular-nums;
 }
 
+/* ── Pill ───────────────────────────────────────────── */
 .pill {
   display: inline-flex;
   align-items: center;
@@ -46,6 +50,50 @@
   font-size: var(--text-xs);
 }
 
+/* ── Formulaires : label + input en colonne ─────────── */
+/* Cible les <label> directement dans un <form>          */
+form label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2, 0.5rem);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-3, 0.75rem);
+}
+
+form label input,
+form label select,
+form label textarea {
+  width: 100%;
+  min-height: 52px;
+  padding: 0.9rem 1rem;
+  border-radius: var(--radius-lg);
+  border: 1.5px solid color-mix(in srgb, var(--color-text) 14%, transparent);
+  background: var(--color-surface-2, var(--color-surface-offset));
+  color: var(--color-text);
+  font-size: var(--text-base);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+form label input:focus,
+form label select:focus,
+form label textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 20%, transparent);
+}
+
+form label textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+form button[type="submit"] {
+  width: 100%;
+  margin-top: var(--space-2, 0.5rem);
+}
+
+/* Classe .field (compatibilite) */
 .field {
   display: grid;
   gap: var(--space-2);
@@ -60,11 +108,11 @@
 .field select,
 .field textarea {
   width: 100%;
-  min-height: 46px;
-  padding: 0.85rem 1rem;
+  min-height: 52px;
+  padding: 0.9rem 1rem;
   border-radius: var(--radius-lg);
-  border: 1px solid color-mix(in srgb, var(--color-text) 12%, transparent);
-  background: var(--color-surface-2);
+  border: 1.5px solid color-mix(in srgb, var(--color-text) 14%, transparent);
+  background: var(--color-surface-2, var(--color-surface-offset));
   outline: none;
 }
 
@@ -80,6 +128,7 @@
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 20%, transparent);
 }
 
+/* ── Section head ───────────────────────────────────── */
 .section-head {
   display: flex;
   justify-content: space-between;
@@ -88,6 +137,7 @@
   margin-bottom: var(--space-3);
 }
 
+/* ── List / Mini ────────────────────────────────────── */
 .list {
   display: grid;
   gap: var(--space-3);
@@ -96,7 +146,7 @@
 .mini {
   padding: var(--space-3);
   border-radius: var(--radius-lg);
-  background: var(--color-surface-2);
+  background: var(--color-surface-2, var(--color-surface-offset));
   border: 1px solid color-mix(in srgb, var(--color-text) 8%, transparent);
 }
 
@@ -104,6 +154,7 @@
   display: block;
 }
 
+/* ── Progress bar ───────────────────────────────────── */
 .progress {
   height: 10px;
   background: color-mix(in srgb, var(--color-text) 8%, transparent);
@@ -118,6 +169,7 @@
   background: var(--color-primary);
 }
 
+/* ── Bottom nav ─────────────────────────────────────── */
 .bottom-nav {
   position: fixed;
   left: 0;
@@ -145,6 +197,7 @@
   color: var(--color-text);
 }
 
+/* ── PWA install ────────────────────────────────────── */
 .install {
   display: none;
 }
@@ -153,6 +206,7 @@
   display: inline-flex;
 }
 
+/* ── Empty state ────────────────────────────────────── */
 .empty {
   padding: var(--space-4);
   text-align: center;
