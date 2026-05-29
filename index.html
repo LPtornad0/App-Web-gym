@@ -17,129 +17,127 @@
   <div class="app">
     <header class="topbar">
       <h1>Gym Progress Mobile</h1>
-      <p>Une app installable sur ton téléphone, sans Play Store.</p>
-      <div class="actions">
+      <p>Une app installable sur ton telephone, sans Play Store.</p>
+
+      <!-- Selecteur de profil -->
+      <div id="profileSelector" style="display:flex;gap:0.5rem;align-items:center;margin-top:var(--space-2);"></div>
+
+      <div class="actions" style="margin-top:var(--space-2);">
         <button class="btn btn-primary install" id="installBtn">Installer</button>
         <button class="btn" id="themeBtn">🌙</button>
-        <button class="btn" id="seedBtn">Exemple</button>
         <button class="btn btn-ghost" id="exportBtn">Exporter</button>
       </div>
     </header>
 
     <section class="view active" id="dashboard">
       <div class="grid stats">
-        <article class="card"><div class="muted">Séances</div><div class="kpi" id="kpiWorkouts">0</div></article>
+        <article class="card"><div class="muted">Seances</div><div class="kpi" id="kpiWorkouts">0</div></article>
         <article class="card"><div class="muted">Volume</div><div class="kpi" id="kpiVolume">0 kg</div></article>
         <article class="card"><div class="muted">Poids</div><div class="kpi" id="kpiWeight">-</div></article>
         <article class="card"><div class="muted">Objectifs</div><div class="kpi" id="kpiGoals">0%</div></article>
       </div>
       <div class="grid" style="margin-top:var(--space-4)">
         <article class="card">
-          <div class="section-head"><div><h2>Progression charge</h2><p class="muted">Volume par séance</p></div><span class="pill">Chart</span></div>
+          <div class="section-head"><div><h2>Progression charge</h2><p class="muted">Volume par seance</p></div><span class="pill">Chart</span></div>
           <canvas id="volumeChart"></canvas>
         </article>
         <article class="card">
-          <div class="section-head"><div><h2>Poids du corps</h2><p class="muted">Dernières mesures</p></div></div>
+          <div class="section-head"><div><h2>Poids du corps</h2><p class="muted">Dernieres mesures</p></div></div>
           <canvas id="weightChart"></canvas>
         </article>
         <article class="card">
-          <h2>Dernières séances</h2>
-          <div id="recentWorkouts" class="list"></div>
+          <h2>Dernieres seances</h2>
+          <div id="recentWorkouts"></div>
         </article>
       </div>
     </section>
 
     <section class="view" id="workouts">
-      <article class="card">
-        <h2>Ajouter une séance</h2>
-        <form id="workoutForm" class="grid">
-          <div class="field"><label for="workoutDate">Date</label><input id="workoutDate" type="date" required></div>
-          <div class="field"><label for="workoutName">Séance</label><input id="workoutName" type="text" placeholder="Push, Pull, Legs" required></div>
-          <div class="field"><label for="exerciseName">Exercice</label><input id="exerciseName" type="text" placeholder="Squat" required></div>
-          <div class="field"><label for="sets">Séries</label><input id="sets" type="number" min="1" value="4" required></div>
-          <div class="field"><label for="reps">Répétitions</label><input id="reps" type="number" min="1" value="8" required></div>
-          <div class="field"><label for="weight">Charge (kg)</label><input id="weight" type="number" min="0" step="0.5" value="40" required></div>
-          <div class="field full"><label for="notes">Notes</label><textarea id="notes" placeholder="RPE, sensations, remarques"></textarea></div>
-          <div class="full" style="display:flex;justify-content:flex-end"><button class="btn btn-primary" type="submit">Enregistrer</button></div>
+      <div class="card">
+        <h2>Ajouter une seance</h2>
+        <form id="workoutForm">
+          <label>Date<input id="workoutDate" type="date" required></label>
+          <label>Seance<input id="workoutName" type="text" placeholder="Push, Pull, Legs" required></label>
+          <label>Exercice<input id="exerciseName" type="text" placeholder="Squat" required></label>
+          <label>Series<input id="sets" type="number" min="1" value="4" required></label>
+          <label>Repetitions<input id="reps" type="number" min="1" value="8" required></label>
+          <label>Charge (kg)<input id="weight" type="number" min="0" step="0.5" value="40" required></label>
+          <label>Notes<input id="notes" type="text" placeholder=""></label>
+          <button class="btn btn-primary" type="submit">Enregistrer</button>
         </form>
-      </article>
-      <article class="card" style="margin-top:var(--space-4)">
+      </div>
+      <div class="card" style="margin-top:var(--space-4);">
         <h2>Historique</h2>
-        <div id="workoutList" class="list"></div>
-      </article>
+        <div id="workoutList"></div>
+      </div>
     </section>
 
     <section class="view" id="measurements">
-      <article class="card">
+      <div class="card">
         <h2>Ajouter une mensuration</h2>
-        <form id="measurementForm" class="grid">
-          <div class="field"><label for="measureDate">Date</label><input id="measureDate" type="date" required></div>
-          <div class="field"><label for="bodyWeight">Poids (kg)</label><input id="bodyWeight" type="number" min="0" step="0.1" required></div>
-          <div class="field"><label for="bodyFat">Masse grasse (%)</label><input id="bodyFat" type="number" min="0" step="0.1"></div>
-          <div class="field"><label for="waist">Taille (cm)</label><input id="waist" type="number" min="0" step="0.1"></div>
-          <div class="field"><label for="arm">Bras (cm)</label><input id="arm" type="number" min="0" step="0.1"></div>
-          <div class="field"><label for="thigh">Cuisse (cm)</label><input id="thigh" type="number" min="0" step="0.1"></div>
-          <div class="full" style="display:flex;justify-content:flex-end"><button class="btn btn-primary" type="submit">Ajouter</button></div>
+        <form id="measurementForm">
+          <label>Date<input id="measureDate" type="date" required></label>
+          <label>Poids (kg)<input id="bodyWeight" type="number" min="0" step="0.1" required></label>
+          <label>Masse grasse (%)<input id="bodyFat" type="number" min="0" step="0.1"></label>
+          <label>Taille (cm)<input id="waist" type="number" min="0" step="0.1"></label>
+          <label>Bras (cm)<input id="arm" type="number" min="0" step="0.1"></label>
+          <label>Cuisse (cm)<input id="thigh" type="number" min="0" step="0.1"></label>
+          <button class="btn btn-primary" type="submit">Ajouter</button>
         </form>
-      </article>
-      <article class="card" style="margin-top:var(--space-4)">
+      </div>
+      <div class="card" style="margin-top:var(--space-4);">
         <h2>Historique mensurations</h2>
-        <div id="measurementList" class="list"></div>
-      </article>
+        <div id="measurementList"></div>
+      </div>
     </section>
 
     <section class="view" id="goals">
-      <article class="card">
+      <div class="card">
         <h2>Objectif</h2>
-        <form id="goalForm" class="grid">
-          <div class="field"><label for="goalType">Type</label><select id="goalType"><option value="Poids du corps">Poids du corps</option><option value="Exercice">Exercice</option><option value="Mensuration">Mensuration</option></select></div>
-          <div class="field"><label for="goalLabel">Nom</label><input id="goalLabel" type="text" placeholder="Bench 80 kg" required></div>
-          <div class="field"><label for="goalTarget">Cible</label><input id="goalTarget" type="number" step="0.1" required></div>
-          <div class="field"><label for="goalCurrent">Actuel</label><input id="goalCurrent" type="number" step="0.1" required></div>
-          <div class="full" style="display:flex;justify-content:flex-end"><button class="btn btn-primary" type="submit">Ajouter</button></div>
+        <form id="goalForm">
+          <label>Type
+            <select id="goalType">
+              <option value="Poids du corps">Poids du corps</option>
+              <option value="Exercice">Exercice</option>
+              <option value="Mensuration">Mensuration</option>
+            </select>
+          </label>
+          <label>Nom<input id="goalLabel" type="text" placeholder="Bench 80 kg" required></label>
+          <label>Cible<input id="goalTarget" type="number" step="0.1" required></label>
+          <label>Actuel<input id="goalCurrent" type="number" step="0.1" required></label>
+          <button class="btn btn-primary" type="submit">Ajouter</button>
         </form>
-      </article>
-      <article class="card" style="margin-top:var(--space-4)">
+      </div>
+      <div class="card" style="margin-top:var(--space-4);">
         <h2>Progression objectifs</h2>
-        <div id="goalList" class="list"></div>
-      </article>
+        <div id="goalList"></div>
+      </div>
     </section>
 
     <section class="view" id="settings">
-      <article class="card">
-        <h2>Paramètres</h2>
-        <div class="list">
-          <div class="mini">
-            <strong>Utilisation mobile</strong>
-            <span class="muted">Ouvre la page dans Chrome ou Safari puis ajoute-la à l'écran d'accueil.</span>
-          </div>
-          <div class="mini">
-            <strong>Sauvegarde</strong>
-            <span class="muted">Les données sont enregistrées en local dans ton navigateur sur ton téléphone.</span>
-          </div>
-          <div class="mini">
-            <strong>Export</strong>
-            <span class="muted">Tu peux exporter en JSON pour garder une copie ou migrer plus tard.</span>
-          </div>
-        </div>
-        <p class="footer-note" style="margin-top:var(--space-4)">Version pensée pour un usage perso, sans publication sur le Play Store.</p>
-      </article>
+      <div class="card">
+        <h2>Parametres</h2>
+        <p><strong>Utilisation mobile</strong><br>Ouvre la page dans Chrome ou Safari puis ajoute-la a l'ecran d'accueil.</p>
+        <p><strong>Sauvegarde</strong><br>Les donnees sont enregistrees en local dans ton navigateur sur ton telephone.</p>
+        <p><strong>Export</strong><br>Tu peux exporter en JSON pour garder une copie ou migrer plus tard.</p>
+        <p style="color:var(--color-text-muted);font-size:var(--text-sm);">Version pensee pour un usage perso, sans publication sur le Play Store.</p>
+      </div>
     </section>
+
+    <nav class="bottom-nav">
+      <button class="active" data-target="dashboard">Accueil</button>
+      <button data-target="workouts">Seances</button>
+      <button data-target="measurements">Mesures</button>
+      <button data-target="goals">Objectifs</button>
+      <button data-target="settings">Reglages</button>
+    </nav>
   </div>
 
-  <nav class="bottom-nav" aria-label="Navigation mobile">
-    <button class="active" data-target="dashboard">Accueil</button>
-    <button data-target="workouts">Séances</button>
-    <button data-target="measurements">Mesures</button>
-    <button data-target="goals">Objectifs</button>
-    <button data-target="settings">Réglages</button>
-  </nav>
-
-  <script src="./assets/js/state.js" defer></script>
-  <script src="./assets/js/charts.js" defer></script>
-  <script src="./assets/js/ui.js" defer></script>
-  <script src="./assets/js/forms.js" defer></script>
-  <script src="./assets/js/pwa.js" defer></script>
-  <script src="./assets/js/app.js" defer></script>
+  <script src="./assets/js/state.js"></script>
+  <script src="./assets/js/charts.js"></script>
+  <script src="./assets/js/ui.js"></script>
+  <script src="./assets/js/forms.js"></script>
+  <script src="./assets/js/pwa.js"></script>
+  <script src="./assets/js/app.js"></script>
 </body>
 </html>
