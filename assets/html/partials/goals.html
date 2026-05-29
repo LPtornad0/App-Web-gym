@@ -1,0 +1,20 @@
+<div class="card">
+  <h2>Objectif</h2>
+  <form id="goalForm">
+    <label>Type
+      <select id="goalType">
+        <option value="Poids du corps">Poids du corps</option>
+        <option value="Exercice">Exercice</option>
+        <option value="Mensuration">Mensuration</option>
+      </select>
+    </label>
+    <label>Nom<input id="goalLabel" type="text" placeholder="Bench 80 kg" required></label>
+    <label>Cible<input id="goalTarget" type="number" step="0.1" required></label>
+    <label>Actuel<input id="goalCurrent" type="number" step="0.1" required></label>
+    <button class="btn btn-primary" type="submit">Ajouter</button>
+  </form>
+</div>
+<div class="card" style="margin-top:var(--space-4);">
+  <h2>Progression objectifs</h2>
+  <div id="goalList"></div>
+</div>

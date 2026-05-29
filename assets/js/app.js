@@ -31,11 +31,13 @@
     });
   }
 
-  function bootstrap() {
+  async function bootstrap() {
+    const { loadPartials } = window.GymPartials;
     const { initForms } = window.GymForms;
     const { initPwa } = window.GymPwa;
     const { renderAll } = window.GymUI;
 
+    await loadPartials();
     initNavigation();
     initTheme();
     initForms();
@@ -43,5 +45,16 @@
     renderAll();
   }
 
-  bootstrap();
+  bootstrap().catch((error) => {
+    console.error(error);
+    const app = document.querySelector(".app");
+    if (app) {
+      app.insertAdjacentHTML(
+        "afterbegin",
+        `<div class="card" style="margin:var(--space-4);border-color:var(--color-danger,#e74c3c);color:var(--color-danger,#e74c3c);">
+          Impossible de charger les fragments HTML. Lance la page depuis un serveur local pour permettre aux requetes fetch de fonctionner.
+        </div>`
+      );
+    }
+  });
 })();
