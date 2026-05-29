@@ -1,0 +1,107 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.5;
+  background: radial-gradient(circle at top right, rgba(79, 152, 163, 0.14), transparent 28%), var(--color-bg);
+  color: var(--color-text);
+  padding-bottom: calc(84px + env(safe-area-inset-bottom));
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+}
+
+.app {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: env(safe-area-inset-top) var(--space-4) 0;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  padding: var(--space-4) 0;
+  background: color-mix(in srgb, var(--color-bg) 86%, transparent);
+  backdrop-filter: blur(12px);
+}
+
+.topbar h1 {
+  font-size: var(--text-xl);
+  line-height: 1.1;
+}
+
+.topbar p {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  margin-top: 0.35rem;
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.view {
+  display: none;
+  padding: var(--space-4) 0 var(--space-8);
+}
+
+.view.active {
+  display: block;
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.stats {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.muted {
+  color: var(--color-text-muted);
+}
+
+.footer-note {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+canvas {
+  width: 100% !important;
+  max-height: 260px;
+}
+
+@media (min-width: 700px) {
+  form.grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .full {
+    grid-column: 1 / -1;
+  }
+}
