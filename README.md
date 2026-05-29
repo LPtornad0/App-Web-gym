@@ -2,7 +2,7 @@
 
 Structure actuelle du projet:
 
-.
+
 ├── gym-progress-mobile.html
 ├── README.md
 └── assets
