@@ -1,0 +1,20 @@
+{
+  "name": "Gym Progress Mobile",
+  "short_name": "GymProgress",
+  "description": "Suivi personnalisé de tes séances de sport, mensurations et objectifs.",
+  "start_url": "/App-Web-gym/",
+  "scope": "/App-Web-gym/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#171614",
+  "theme_color": "#171614",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "./assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

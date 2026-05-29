@@ -1,0 +1,20 @@
+<div class="grid stats">
+  <article class="card"><div class="muted">Seances</div><div class="kpi" id="kpiWorkouts">0</div></article>
+  <article class="card"><div class="muted">Volume</div><div class="kpi" id="kpiVolume">0 kg</div></article>
+  <article class="card"><div class="muted">Poids</div><div class="kpi" id="kpiWeight">-</div></article>
+  <article class="card"><div class="muted">Objectifs</div><div class="kpi" id="kpiGoals">0%</div></article>
+</div>
+<div class="grid" style="margin-top:var(--space-4)">
+  <article class="card">
+    <div class="section-head"><div><h2>Progression charge</h2><p class="muted">Volume par seance</p></div><span class="pill">Chart</span></div>
+    <canvas id="volumeChart"></canvas>
+  </article>
+  <article class="card">
+    <div class="section-head"><div><h2>Poids du corps</h2><p class="muted">Dernieres mesures</p></div></div>
+    <canvas id="weightChart"></canvas>
+  </article>
+  <article class="card">
+    <h2>Dernieres seances</h2>
+    <div id="recentWorkouts"></div>
+  </article>
+</div>

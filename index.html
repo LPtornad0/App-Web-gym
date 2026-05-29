@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#171614" />
+  <meta name="manifest" content="/manifest.json">
   <title>Gym Progress Mobile</title>
   <link rel="preconnect" href="https://api.fontshare.com">
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
@@ -26,115 +27,11 @@
       </div>
     </header>
 
-    <!-- Dashboard -->
-    <section class="view active" id="dashboard">
-      <div class="grid stats">
-        <article class="card"><div class="muted">Seances</div><div class="kpi" id="kpiWorkouts">0</div></article>
-        <article class="card"><div class="muted">Volume</div><div class="kpi" id="kpiVolume">0 kg</div></article>
-        <article class="card"><div class="muted">Poids</div><div class="kpi" id="kpiWeight">-</div></article>
-        <article class="card"><div class="muted">Objectifs</div><div class="kpi" id="kpiGoals">0%</div></article>
-      </div>
-      <div class="grid" style="margin-top:var(--space-4)">
-        <article class="card">
-          <div class="section-head"><div><h2>Progression charge</h2><p class="muted">Volume par seance</p></div><span class="pill">Chart</span></div>
-          <canvas id="volumeChart"></canvas>
-        </article>
-        <article class="card">
-          <div class="section-head"><div><h2>Poids du corps</h2><p class="muted">Dernieres mesures</p></div></div>
-          <canvas id="weightChart"></canvas>
-        </article>
-        <article class="card">
-          <h2>Dernieres seances</h2>
-          <div id="recentWorkouts"></div>
-        </article>
-      </div>
-    </section>
-
-    <!-- Seances -->
-    <section class="view" id="workouts">
-      <div class="card">
-        <h2>Ajouter une seance</h2>
-        <form id="workoutForm">
-
-          <!-- Infos de la seance -->
-          <label>Date
-            <input id="workoutDate" type="date" required>
-          </label>
-          <label>Nom de la seance
-            <input id="workoutName" type="text" placeholder="Push, Pull, Legs" required>
-          </label>
-
-          <!-- Liste des exercices -->
-          <div id="exerciseList"></div>
-
-          <!-- Bouton ajouter un exercice -->
-          <button type="button" id="addExerciseBtn" class="btn" style="width:100%;margin-bottom:var(--space-3);">
-            + Ajouter un exercice
-          </button>
-
-          <button class="btn btn-primary" type="submit">Enregistrer la seance</button>
-        </form>
-      </div>
-      <div class="card" style="margin-top:var(--space-4);">
-        <h2>Historique</h2>
-        <div id="workoutList"></div>
-      </div>
-    </section>
-
-    <!-- Mesures -->
-    <section class="view" id="measurements">
-      <div class="card">
-        <h2>Ajouter une mensuration</h2>
-        <form id="measurementForm">
-          <label>Date<input id="measureDate" type="date" required></label>
-          <label>Poids (kg)<input id="bodyWeight" type="number" min="0" step="0.1" required></label>
-          <label>Masse grasse (%)<input id="bodyFat" type="number" min="0" step="0.1"></label>
-          <label>Taille (cm)<input id="waist" type="number" min="0" step="0.1"></label>
-          <label>Bras (cm)<input id="arm" type="number" min="0" step="0.1"></label>
-          <label>Cuisse (cm)<input id="thigh" type="number" min="0" step="0.1"></label>
-          <button class="btn btn-primary" type="submit">Ajouter</button>
-        </form>
-      </div>
-      <div class="card" style="margin-top:var(--space-4);">
-        <h2>Historique mensurations</h2>
-        <div id="measurementList"></div>
-      </div>
-    </section>
-
-    <!-- Objectifs -->
-    <section class="view" id="goals">
-      <div class="card">
-        <h2>Objectif</h2>
-        <form id="goalForm">
-          <label>Type
-            <select id="goalType">
-              <option value="Poids du corps">Poids du corps</option>
-              <option value="Exercice">Exercice</option>
-              <option value="Mensuration">Mensuration</option>
-            </select>
-          </label>
-          <label>Nom<input id="goalLabel" type="text" placeholder="Bench 80 kg" required></label>
-          <label>Cible<input id="goalTarget" type="number" step="0.1" required></label>
-          <label>Actuel<input id="goalCurrent" type="number" step="0.1" required></label>
-          <button class="btn btn-primary" type="submit">Ajouter</button>
-        </form>
-      </div>
-      <div class="card" style="margin-top:var(--space-4);">
-        <h2>Progression objectifs</h2>
-        <div id="goalList"></div>
-      </div>
-    </section>
-
-    <!-- Reglages -->
-    <section class="view" id="settings">
-      <div class="card">
-        <h2>Parametres</h2>
-        <p><strong>Utilisation mobile</strong><br>Ouvre la page dans Chrome ou Safari puis ajoute-la a l'ecran d'accueil.</p>
-        <p><strong>Sauvegarde</strong><br>Les donnees sont enregistrees en local dans ton navigateur sur ton telephone.</p>
-        <p><strong>Export</strong><br>Tu peux exporter en JSON pour garder une copie ou migrer plus tard.</p>
-        <p style="color:var(--color-text-muted);font-size:var(--text-sm);">Version pensee pour un usage perso, sans publication sur le Play Store.</p>
-      </div>
-    </section>
+    <section class="view active" id="dashboard" data-fragment="dashboard"></section>
+    <section class="view" id="workouts" data-fragment="workouts"></section>
+    <section class="view" id="measurements" data-fragment="measurements"></section>
+    <section class="view" id="goals" data-fragment="goals"></section>
+    <section class="view" id="settings" data-fragment="settings"></section>
 
     <nav class="bottom-nav">
       <button class="active" data-target="dashboard">Accueil</button>
@@ -150,6 +47,7 @@
   <script src="./assets/js/ui.js"></script>
   <script src="./assets/js/forms.js"></script>
   <script src="./assets/js/pwa.js"></script>
+  <script src="./assets/js/partials.js"></script>
   <script src="./assets/js/app.js"></script>
 </body>
 </html>
