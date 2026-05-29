@@ -1,0 +1,20 @@
+<div class="card">
+  <h2>Ajouter une seance</h2>
+  <form id="workoutForm">
+    <label>Date
+      <input id="workoutDate" type="date" required>
+    </label>
+    <label>Nom de la seance
+      <input id="workoutName" type="text" placeholder="Push, Pull, Legs" required>
+    </label>
+    <div id="exerciseList"></div>
+    <button type="button" id="addExerciseBtn" class="btn" style="width:100%;margin-bottom:var(--space-3);">
+      + Ajouter un exercice
+    </button>
+    <button class="btn btn-primary" type="submit">Enregistrer la seance</button>
+  </form>
+</div>
+<div class="card" style="margin-top:var(--space-4);">
+  <h2>Historique</h2>
+  <div id="workoutList"></div>
+</div>

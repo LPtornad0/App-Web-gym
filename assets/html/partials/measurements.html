@@ -1,0 +1,16 @@
+<div class="card">
+  <h2>Ajouter une mensuration</h2>
+  <form id="measurementForm">
+    <label>Date<input id="measureDate" type="date" required></label>
+    <label>Poids (kg)<input id="bodyWeight" type="number" min="0" step="0.1" required></label>
+    <label>Masse grasse (%)<input id="bodyFat" type="number" min="0" step="0.1"></label>
+    <label>Taille (cm)<input id="waist" type="number" min="0" step="0.1"></label>
+    <label>Bras (cm)<input id="arm" type="number" min="0" step="0.1"></label>
+    <label>Cuisse (cm)<input id="thigh" type="number" min="0" step="0.1"></label>
+    <button class="btn btn-primary" type="submit">Ajouter</button>
+  </form>
+</div>
+<div class="card" style="margin-top:var(--space-4);">
+  <h2>Historique mensurations</h2>
+  <div id="measurementList"></div>
+</div>
