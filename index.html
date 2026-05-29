@@ -18,17 +18,15 @@
     <header class="topbar">
       <h1>Gym Progress Mobile</h1>
       <p>Une app installable sur ton telephone, sans Play Store.</p>
-
-      <!-- Selecteur de profil -->
       <div id="profileSelector" style="display:flex;gap:0.5rem;align-items:center;margin-top:var(--space-2);"></div>
-
       <div class="actions" style="margin-top:var(--space-2);">
         <button class="btn btn-primary install" id="installBtn">Installer</button>
-        <button class="btn" id="themeBtn">🌙</button>
+        <button class="btn" id="themeBtn">&#127769;</button>
         <button class="btn btn-ghost" id="exportBtn">Exporter</button>
       </div>
     </header>
 
+    <!-- Dashboard -->
     <section class="view active" id="dashboard">
       <div class="grid stats">
         <article class="card"><div class="muted">Seances</div><div class="kpi" id="kpiWorkouts">0</div></article>
@@ -52,18 +50,29 @@
       </div>
     </section>
 
+    <!-- Seances -->
     <section class="view" id="workouts">
       <div class="card">
         <h2>Ajouter une seance</h2>
         <form id="workoutForm">
-          <label>Date<input id="workoutDate" type="date" required></label>
-          <label>Seance<input id="workoutName" type="text" placeholder="Push, Pull, Legs" required></label>
-          <label>Exercice<input id="exerciseName" type="text" placeholder="Squat" required></label>
-          <label>Series<input id="sets" type="number" min="1" value="4" required></label>
-          <label>Repetitions<input id="reps" type="number" min="1" value="8" required></label>
-          <label>Charge (kg)<input id="weight" type="number" min="0" step="0.5" value="40" required></label>
-          <label>Notes<input id="notes" type="text" placeholder=""></label>
-          <button class="btn btn-primary" type="submit">Enregistrer</button>
+
+          <!-- Infos de la seance -->
+          <label>Date
+            <input id="workoutDate" type="date" required>
+          </label>
+          <label>Nom de la seance
+            <input id="workoutName" type="text" placeholder="Push, Pull, Legs" required>
+          </label>
+
+          <!-- Liste des exercices -->
+          <div id="exerciseList"></div>
+
+          <!-- Bouton ajouter un exercice -->
+          <button type="button" id="addExerciseBtn" class="btn" style="width:100%;margin-bottom:var(--space-3);">
+            + Ajouter un exercice
+          </button>
+
+          <button class="btn btn-primary" type="submit">Enregistrer la seance</button>
         </form>
       </div>
       <div class="card" style="margin-top:var(--space-4);">
@@ -72,6 +81,7 @@
       </div>
     </section>
 
+    <!-- Mesures -->
     <section class="view" id="measurements">
       <div class="card">
         <h2>Ajouter une mensuration</h2>
@@ -91,6 +101,7 @@
       </div>
     </section>
 
+    <!-- Objectifs -->
     <section class="view" id="goals">
       <div class="card">
         <h2>Objectif</h2>
@@ -114,6 +125,7 @@
       </div>
     </section>
 
+    <!-- Reglages -->
     <section class="view" id="settings">
       <div class="card">
         <h2>Parametres</h2>
