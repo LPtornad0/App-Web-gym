@@ -9,9 +9,12 @@
   "background_color": "#171614",
   "theme_color": "#171614",
   "lang": "fr",
-  "categories": ["health", "fitness"],
+  "categories": [
+    "fitness",
+    "health",
+    "utilities"
+  ],
   "prefer_related_applications": false,
-  "related_applications": [],
   "icons": [
     {
       "src": "./assets/icons/icon-512.png",
