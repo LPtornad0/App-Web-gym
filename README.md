@@ -2,7 +2,7 @@
 
 Structure actuelle du projet:
 
-
+```
 ├── gym-progress-mobile.html
 │ 
 ├── README.md
@@ -20,7 +20,7 @@ Structure actuelle du projet:
 		├── forms.js
 		├── pwa.js
 		└── app.js
-
+```
 Responsabilites:
 
 - HTML: structure de la page uniquement
