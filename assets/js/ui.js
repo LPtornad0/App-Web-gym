@@ -18,9 +18,19 @@
     const { state, $, volume } = window.GymApp;
     const rows = [...state.workouts].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 4);
     $("#recentWorkouts").innerHTML = rows.length
-      ? rows.map((w) =>
-          `<div class="mini"><strong>${w.exercise}</strong><span class="muted">${w.date} · ${w.name}</span><div class="muted">${w.sets} x ${w.reps} a ${w.weight} kg · ${Math.round(volume(w))} kg volume</div></div>`
-        ).join("")
+      ? rows.map((w) => {
+          const exObj = w.exerciseId ? window.GymApp.findExerciseById(w.exerciseId) : null;
+          const label = exObj ? exObj.label : (w.exercise || "—");
+          let metric = "";
+          if (exObj && exObj.type === "duration") {
+            metric = `${w.duration || 0} min`;
+          } else if (exObj && exObj.type === "bodyweight") {
+            metric = `${(w.sets || 0) * (w.reps || 0)} reps`;
+          } else {
+            metric = `${w.sets || 0} x ${w.reps || 0} a ${w.weight || 0} kg · ${Math.round(volume(w))} kg volume`;
+          }
+          return `<div class="mini"><strong>${label}</strong><span class="muted">${w.date} · ${w.name}</span><div class="muted">${metric}</div></div>`;
+        }).join("")
       : `<div class="empty">Ajoute une seance pour commencer.</div>`;
   }
 
@@ -44,16 +54,26 @@
     }
 
     $("#workoutList").innerHTML = seances.map((seance) => {
-      const exHtml = seance.exercises.map((ex) =>
-        `<div class="mini" style="display:flex;justify-content:space-between;align-items:center;">
+      const exHtml = seance.exercises.map((ex) => {
+        const exObj = ex.exerciseId ? window.GymApp.findExerciseById(ex.exerciseId) : null;
+        const label = exObj ? exObj.label : (ex.exercise || "—");
+        let metric = "";
+        if (exObj && exObj.type === "duration") {
+          metric = `${ex.duration || 0} min`;
+        } else if (exObj && exObj.type === "bodyweight") {
+          metric = `${(ex.sets || 0) * (ex.reps || 0)} reps`;
+        } else {
+          metric = `${ex.sets || 0} x ${ex.reps || 0} a ${ex.weight || 0} kg · Volume ${Math.round(volume(ex))} kg`;
+        }
+        return `<div class="mini" style="display:flex;justify-content:space-between;align-items:center;">
           <div>
-            <strong>${ex.exercise}</strong>
-            <div class="muted">${ex.sets} x ${ex.reps} a ${ex.weight} kg &middot; Volume ${Math.round(volume(ex))} kg</div>
+            <strong>${label}</strong>
+            <div class="muted">${metric}</div>
             ${ex.notes ? `<div class="muted">${ex.notes}</div>` : ""}
           </div>
           <button class="btn" style="padding:0.25rem 0.6rem;font-size:0.75rem;color:var(--color-danger,#e74c3c);" data-del-exercise="${ex._idx}" title="Supprimer cet exercice">×</button>
-        </div>`
-      ).join("");
+        </div>`;
+      }).join("");
 
       const seanceKey = `${seance.date}__${seance.name}`;
       return `<div class="card" style="margin-bottom:var(--space-3);">
@@ -220,7 +240,15 @@
     renderMeasurementList();
     renderGoals();
     renderProfileSelector();
+    if (window.GymForms && window.GymForms.refreshExerciseBlocks) {
+      window.GymForms.refreshExerciseBlocks();
+    }
     drawCharts();
+    if (window.GymCharts && window.GymCharts.initExerciseSelector) {
+      window.GymCharts.initExerciseSelector();
+      const sel = document.getElementById("exerciseSelect");
+      if (sel && sel.value) window.GymCharts.drawExerciseChart(sel.value);
+    }
     save();
   }
 

@@ -1,0 +1,19 @@
+<div class="card">
+  <h2>Gestion des exercices</h2>
+  <form id="exerciseForm" style="display:flex;gap:var(--space-2);align-items:center;flex-wrap:wrap;">
+    <label style="flex:1;min-width:180px;">Nom
+      <input id="exerciseLabel" type="text" placeholder="Ex: Squat, Pompes..." required>
+    </label>
+    <label>Type
+      <select id="exerciseType">
+        <option value="weighted">weighted (charge)</option>
+        <option value="bodyweight">bodyweight (poids du corps)</option>
+        <option value="duration">duration (durée)</option>
+      </select>
+    </label>
+    <button class="btn btn-primary" type="submit">Ajouter</button>
+  </form>
+  <div style="margin-top:var(--space-3);">
+    <div id="exerciseCatalog"></div>
+  </div>
+</div>

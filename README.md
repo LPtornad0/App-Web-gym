@@ -3,23 +3,34 @@
 Structure actuelle du projet:
 
 ```
-├── gym-progress-mobile.html
-│ 
-├── README.md
-│ 
-└── assets
-	├── css
-	│   ├── tokens.css
-	│   ├── base.css
-	│   ├── components.css
-	│   └── views.css
-	└── js
-		├── state.js
-		├── charts.js
-		├── ui.js
-		├── forms.js
-		├── pwa.js
-		└── app.js
+index.html
+manifest.json
+README.md
+assets/
+	css/
+		tokens.css
+		base.css
+		components.css
+		views.css
+	html/
+		partials/
+			dashboard.html
+			goals.html
+			measurements.html
+			settings.html
+			workouts.html
+	icons/
+		android/
+		ios/
+		windows/
+js/
+	app.js
+	charts.js
+	forms.js
+	partials.js
+	pwa.js
+	state.js
+	ui.js
 ```
 Responsabilites:
 

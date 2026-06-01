@@ -5,6 +5,7 @@
     measurements: "./assets/html/partials/measurements.html",
     goals: "./assets/html/partials/goals.html",
     settings: "./assets/html/partials/settings.html",
+    exercises: "./assets/html/partials/exercises.html",
   };
 
   async function loadPartials() {

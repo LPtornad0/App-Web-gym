@@ -41,6 +41,8 @@
     initNavigation();
     initTheme();
     initForms();
+    /* Init exercise manager (if partial present) */
+    if (window.GymForms && window.GymForms.initExerciseManager) window.GymForms.initExerciseManager();
     initPwa();
     renderAll();
   }
